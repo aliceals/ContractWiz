@@ -1,5 +1,5 @@
 const express = require('express')
-// const db = require('../db')
+const db = require('../db')
 const router = express.Router()
 const hbs = require('express-handlebars')
 const fetch = require('node-fetch')
@@ -13,12 +13,19 @@ router.get('/home', (req, res) => {
     res.render('home')
 })
 
+router.post('/home', (req, res) => {
+    const date = req.body
+    res.redirect('/home')
+})
+
 router.get('/book', (req, res) => {
     res.render('book')
 })
 
 
-
+router.post('/book', (req, res) => {
+    console.log(res.body)
+})
 
 
 
