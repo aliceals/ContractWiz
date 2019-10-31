@@ -1,6 +1,6 @@
 const express = require('express')
 const hbs = require('express-handlebars')
-// const routes = require('./routes')
+const routes = require('./routes/users')
 const server = express()
 
 //Middleware
@@ -11,10 +11,10 @@ server.use(express.urlencoded({ extended: true }))
 
 //Routes
 
-server.get('/', (req, res) => {
-    res.send("Hello world")
-})
+// server.get('/', (req, res) => {
+//     res.send("Hello world")
+// })
 
-// server.use('/', routes)
+server.use('/', routes)
 
 module.exports = server
