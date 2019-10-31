@@ -23,10 +23,16 @@ router.get('/home', (req, res) => {
     let sevendays = moment().add(7, 'days').format('MMM Do YY')
 
     let dates = {
-
+        tomorrow: tomorrow,
+        twodays: twodays,
+        threedays: threedays,
+        fourdays: fourdays,
+        fivedays: fivedays,
+        sixdays: sixdays,
+        sevendays: sevendays
     }
 
-    res.render('home')
+    res.render('home', dates)
 })
 
 router.post('/home', (req, res) => {
