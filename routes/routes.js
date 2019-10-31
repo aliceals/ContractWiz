@@ -13,10 +13,10 @@ router.get('/', (req, res) => {
 })
 
 router.get('/home', (req, res) => {
-    let now = moment().subtract(10, 'days').calendar()
-    let tomorrow = moment().add(1, 'days').calendar()
-    let twodays = moment().add(2, 'days').calendar()
-    let threedays = moment().add(10, 'days').calendar()
+    let now = moment().subtract(10, 'days').format('MMM Do YY')
+    let tomorrow = moment().add(1, 'days').format('MMM Do YY')
+    let twodays = moment().add(2, 'days').format('MMM Do YY')
+    let threedays = moment().add(3, 'days').format('MMM Do YY')
 
     console.log(threedays)
 
