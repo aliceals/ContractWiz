@@ -17,8 +17,14 @@ router.get('/home', (req, res) => {
     let tomorrow = moment().add(1, 'days').format('MMM Do YY')
     let twodays = moment().add(2, 'days').format('MMM Do YY')
     let threedays = moment().add(3, 'days').format('MMM Do YY')
+    let fourdays = moment().add(4, 'days').format('MMM Do YY')
+    let fivedays = moment().add(5, 'days').format('MMM Do YY')
+    let sixdays = moment().add(6, 'days').format('MMM Do YY')
+    let sevendays = moment().add(7, 'days').format('MMM Do YY')
 
-    console.log(threedays)
+    let dates = {
+
+    }
 
     res.render('home')
 })
