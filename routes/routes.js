@@ -3,6 +3,9 @@ const db = require('../db')
 const router = express.Router()
 const hbs = require('express-handlebars')
 const fetch = require('node-fetch')
+const moment = require('moment');
+
+
 
 
 router.get('/', (req, res) => {
@@ -10,6 +13,13 @@ router.get('/', (req, res) => {
 })
 
 router.get('/home', (req, res) => {
+    let now = moment().subtract(10, 'days').calendar()
+    let tomorrow = moment().add(1, 'days').calendar()
+    let twodays = moment().add(2, 'days').calendar()
+    let threedays = moment().add(10, 'days').calendar()
+
+    console.log(threedays)
+
     res.render('home')
 })
 
