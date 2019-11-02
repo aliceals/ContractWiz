@@ -4,24 +4,24 @@
     <table class="table table-bordered table-hover">
         <thead>
             <tr class="table-primary">
-                <th scope="col" id="day1">{{tomorrow}}</th>
-                <th scope="col">{{twodays}}</th>
-                <th scope="col">{{threedays}}</th>
-                <th scope="col">{{fourdays}}</th>
-                <th scope="col">{{fivedays}}</th>
-                <th scope="col">{{sixdays}}</th>
-                <th scope="col">{{sevendays}}</th>
+                <th scope="col" id="day1">{{dates.tomorrow}}</th>
+                <th scope="col">{{dates.twodays}}</th>
+                <th scope="col">{{dates.threedays}}</th>
+                <th scope="col">{{dates.fourdays}}</th>
+                <th scope="col">{{dates.fivedays}}</th>
+                <th scope="col">{{dates.sixdays}}</th>
+                <th scope="col">{{dates.sevendays}}</th>
             </tr>
         </thead>
         <tbody>
             <tr class="table-primary">
-                <td>{{weather}}</td>
-                <td>Rainy</td>
-                <td>Windy</td>
-                <td>Rainy</td>
-                <td>Rainy</td>
-                <td>Rainy</td>
-                <td>Rainy</td>
+                <td>{{weather.weatherTom}}</td>
+                <td>{{weather.weatherTwo}}</td>
+                <td>{{weather.weatherThree}}</td>
+                <td>{{weather.weatherFour}}</td>
+                <td>{{weather.weatherFive}}</td>
+                <td>{{weather.weatherSix}}</td>
+                <td>{{weather.weatherSeven}}</td>
             </tr>
             <form action="/home" method="POST"></form>
             <tr class="table-primary">
