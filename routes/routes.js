@@ -78,8 +78,7 @@ router.get('/home', (req, res) => {
 })
 
 
-router.post('/home', (req, res) => {
-    // console.log(req.body)
+router.post('/book', (req, res) => {
     let data = req.body
 
     console.log(data)
