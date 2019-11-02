@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 
 router.get('/home', (req, res) => {
-    fetch("https://api.darksky.net/forecast/6fe0e60f51867939f3313dd1351dcd17/-41.131489,174.839996")
+    fetch("https://api.darksky.net/forecast/6fe0e60f51867939f3313dd1351dcd17/-41.131489,174.839996?units=si")
         .then((res) => res.json())
         .then(json => {
 
@@ -27,21 +27,21 @@ router.get('/home', (req, res) => {
             let weatherSix = json.daily.data[6].icon
             let weatherSeven = json.daily.data[7].icon
 
-            let tempTomHigh = json.daily.data[1].temperatureHigh
-            let tempTwoHigh = json.daily.data[2].temperatureHigh
-            let tempThreeHigh = json.daily.data[3].temperatureHigh
-            let tempFourHigh = json.daily.data[4].temperatureHigh
-            let tempFiveHigh = json.daily.data[5].temperatureHigh
-            let tempSixHigh = json.daily.data[6].temperatureHigh
-            let tempSevenHigh = json.daily.data[7].temperatureHigh
+            let tempTomHigh = Math.round(json.daily.data[1].temperatureHigh)
+            let tempTwoHigh = Math.round(json.daily.data[2].temperatureHigh)
+            let tempThreeHigh = Math.round(json.daily.data[3].temperatureHigh)
+            let tempFourHigh = Math.round(json.daily.data[4].temperatureHigh)
+            let tempFiveHigh = Math.round(json.daily.data[5].temperatureHigh)
+            let tempSixHigh = Math.round(json.daily.data[6].temperatureHigh)
+            let tempSevenHigh = Math.round(json.daily.data[7].temperatureHigh)
 
-            let tempTomLow = json.daily.data[1].temperatureLow
-            let tempTwoLow = json.daily.data[2].temperatureLow
-            let tempThreeLow = json.daily.data[3].temperatureLow
-            let tempFourLow = json.daily.data[4].temperatureLow
-            let tempFiveLow = json.daily.data[5].temperatureLow
-            let tempSixLow = json.daily.data[6].temperatureLow
-            let tempSevenLow = json.daily.data[7].temperatureLow
+            let tempTomLow = Math.round(json.daily.data[1].temperatureLow)
+            let tempTwoLow = Math.round(json.daily.data[2].temperatureLow)
+            let tempThreeLow = Math.round(json.daily.data[3].temperatureLow)
+            let tempFourLow = Math.round(json.daily.data[4].temperatureLow)
+            let tempFiveLow = Math.round(json.daily.data[5].temperatureLow)
+            let tempSixLow = Math.round(json.daily.data[6].temperatureLow)
+            let tempSevenLow = Math.round(json.daily.data[7].temperatureLow)
 
             let displayTomorrow = moment().add(1, 'days').format('MMM Do YY')
             let displayTwodays = moment().add(2, 'days').format('MMM Do YY')
