@@ -4,13 +4,13 @@
     <table class="table table-bordered table-hover">
         <thead>
             <tr class="table-primary">
-                <th scope="col" id="day1">{{dates.tomorrow}}</th>
-                <th scope="col">{{dates.twodays}}</th>
-                <th scope="col">{{dates.threedays}}</th>
-                <th scope="col">{{dates.fourdays}}</th>
-                <th scope="col">{{dates.fivedays}}</th>
-                <th scope="col">{{dates.sixdays}}</th>
-                <th scope="col">{{dates.sevendays}}</th>
+                <th scope="col" id="day1">{{displayDates.displayTomorrow}}</th>
+                <th scope="col">{{displayDates.displayTwodays}}</th>
+                <th scope="col">{{displayDates.displayThreedays}}</th>
+                <th scope="col">{{displayDates.displayFourdays}}</th>
+                <th scope="col">{{displayDates.displayFivedays}}</th>
+                <th scope="col">{{displayDates.displaySixdays}}</th>
+                <th scope="col">{{displayDates.displaySevendays}}</th>
             </tr>
         </thead>
         <tbody>
@@ -23,28 +23,35 @@
                 <td>{{weather.weatherSix}} <br>Max temp: {{temp.tempSixHigh}}<br>Min temp:{{temp.tempSixLow}}</td>
                 <td>{{weather.weatherSeven}} <br>Max temp: {{temp.tempSevenHigh}}<br>Min temp:{{temp.tempSevenLow}}</td>
             </tr>
-            <form action="/home" method="POST"></form>
+            <form action="/book" method="POST"></form>
             <tr class="table-primary">
                 <td>
-                    <form action="/home" method="POST"><button name="monday" value="{{tomorrow}}">Book</button></form>
+                    <form action="/home" method="POST"><button name="monday" value="{{dates.tomorrow}}">Book</button>
+                    </form>
                 </td>
                 <td>
-                    <form action="/home" method="POST"><button name="tuesday" value="tuesday">Book</button></form>
+                    <form action="/home" method="POST"><button name="tuesday" value="{{dates.twodays}}">Book</button>
+                    </form>
                 </td>
                 <td>
-                    <form action="/home" method="POST"><button name="wednesday" value="wednesday">Book</button></form>
+                    <form action="/home" method="POST"><button name="wednesday"
+                            value="{{dates.threedays}}">Book</button></form>
                 </td>
                 <td>
-                    <form action="/home" method="POST"><button name="thursday" value="thursday">Book</button></form>
+                    <form action="/home" method="POST"><button name="thursday" value="{{dates.fourdays}}">Book</button>
+                    </form>
                 </td>
                 <td>
-                    <form action="/home" method="POST"><button name="friday" value="friday">Book</button></form>
+                    <form action="/home" method="POST"><button name="friday" value="{{dates.fivedays}}">Book</button>
+                    </form>
                 </td>
                 <td>
-                    <form action="/home" method="POST"><button name="saturday" value="saturday">Book</button></form>
+                    <form action="/home" method="POST"><button name="saturday" value="{{dates.sixdays}}">Book</button>
+                    </form>
                 </td>
                 <td>
-                    <form action="/home" method="POST"><button name="sunday" value="sunday">Book</button></form>
+                    <form action="/home" method="POST"><button name="sunday" value="{{dates.sevendays}}">Book</button>
+                    </form>
                 </td>
             </tr>
             </form>

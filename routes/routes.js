@@ -17,7 +17,6 @@ router.get('/home', (req, res) => {
     fetch("https://api.darksky.net/forecast/6fe0e60f51867939f3313dd1351dcd17/-41.131489,174.839996")
         .then((res) => res.json())
         .then(json => {
-            console.log(json.daily.data[1])
 
             let weatherTom = json.daily.data[1].icon
             let weatherTwo = json.daily.data[2].icon
@@ -43,17 +42,28 @@ router.get('/home', (req, res) => {
             let tempSixLow = json.daily.data[6].temperatureLow
             let tempSevenLow = json.daily.data[7].temperatureLow
 
-            let now = moment().subtract(10, 'days').format('MMM Do YY')
-            let tomorrow = moment().add(1, 'days').format('MMM Do YY')
-            let twodays = moment().add(2, 'days').format('MMM Do YY')
-            let threedays = moment().add(3, 'days').format('MMM Do YY')
-            let fourdays = moment().add(4, 'days').format('MMM Do YY')
-            let fivedays = moment().add(5, 'days').format('MMM Do YY')
-            let sixdays = moment().add(6, 'days').format('MMM Do YY')
-            let sevendays = moment().add(7, 'days').format('MMM Do YY')
+            let displayTomorrow = moment().add(1, 'days').format('MMM Do YY')
+            let displayTwodays = moment().add(2, 'days').format('MMM Do YY')
+            let displayThreedays = moment().add(3, 'days').format('MMM Do YY')
+            let displayFourdays = moment().add(4, 'days').format('MMM Do YY')
+            let displayFivedays = moment().add(5, 'days').format('MMM Do YY')
+            let displaySixdays = moment().add(6, 'days').format('MMM Do YY')
+            let displaySevendays = moment().add(7, 'days').format('MMM Do YY')
+
+            let tomorrow = moment().add(1, 'days').format('L')
+            let twodays = moment().add(2, 'days').format('L')
+            let threedays = moment().add(3, 'days').format('L')
+            let fourdays = moment().add(4, 'days').format('L')
+            let fivedays = moment().add(5, 'days').format('L')
+            let sixdays = moment().add(6, 'days').format('L')
+            let sevendays = moment().add(7, 'days').format('L')
 
             let data = {
                 dates: { tomorrow, twodays, threedays, fourdays, fivedays, sixdays, sevendays },
+                displayDates: {
+                    displayTomorrow, displayTwodays, displayThreedays, displayFourdays, displayFivedays,
+                    displaySixdays, displaySevendays
+                },
                 weather: {
                     weatherTom, weatherTwo, weatherThree, weatherFour, weatherFive, weatherSix, weatherSeven
                 },
@@ -65,7 +75,6 @@ router.get('/home', (req, res) => {
 
             res.render('home', data)
         })
-
 })
 
 
@@ -80,9 +89,11 @@ router.get('/book', (req, res) => {
 })
 
 
-router.post('/book', (req, res) => {
-    console.log(res.body)
-})
+// router.post('/book', (req, res) => {
+//     console.log(res.body)
+
+//     // res.render('book')
+// })
 
 
 
