@@ -17,6 +17,7 @@ router.get('/home', (req, res) => {
     fetch("https://api.darksky.net/forecast/6fe0e60f51867939f3313dd1351dcd17/-41.131489,174.839996")
         .then((res) => res.json())
         .then(json => {
+            moment.locale('en-nz')
 
             let weatherTom = json.daily.data[1].icon
             let weatherTwo = json.daily.data[2].icon
