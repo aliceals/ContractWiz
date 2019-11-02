@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             <tr class="table-primary">
-                <td>Sunny</td>
+                <td>{{weather}}</td>
                 <td>Rainy</td>
                 <td>Windy</td>
                 <td>Rainy</td>
@@ -26,7 +26,7 @@
             <form action="/home" method="POST"></form>
             <tr class="table-primary">
                 <td>
-                    <form action="/home" method="POST"><button name="monday" value="monday">Book</button></form>
+                    <form action="/home" method="POST"><button name="monday" value="{{tomorrow}}">Book</button></form>
                 </td>
                 <td>
                     <form action="/home" method="POST"><button name="tuesday" value="tuesday">Book</button></form>

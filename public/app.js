@@ -12,12 +12,3 @@
 
 
 
-// var moment = require('moment');
-
-// moment().format();
-
-// let tomorrow = now.add(1, 'days')
-
-// let tomorrowDate = document.getElementById('day1')
-
-// tomorrowDate.innerHTML = "tomorrow"
