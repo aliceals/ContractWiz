@@ -80,8 +80,6 @@ router.get('/home', (req, res) => {
 
 router.post('/book', (req, res) => {
     let data = req.body
-
-    console.log(data)
     res.render('book', data)
 })
 
@@ -90,24 +88,29 @@ router.get('/book', (req, res) => {
 })
 
 
-// router.post('/book', (req, res) => {
-//     console.log(res.body)
+router.post('/booking', (req, res) => {
+    console.log(req.body)
 
-//     // res.render('book')
-// })
-
+    let booking = req.body
 
 
+    db.getBookings()
+        .then(data => {
+            console.log(data)
+        })
+
+    // res.render('bookings')
+})
 
 
-// router.get("API/getweather", (req, res) => {
-//     fetch("http://api.openweathermap.org/data/2.5/weather?q=Wellington,nzl&APPID=ba4745edb1c9e697fb3063cbb511b2bd")
-//         .then((res) => res.json())
-//         .then(json => {
-//             console.log(json)
-//             res.send(json)
-//         })
-// })
+router.get('/booking', (req, res) => {
+    db.getBookings()
+        .then(data => {
+            res.render('bookings', { data: data })
+        })
+})
+
+
 
 module.exports = router
 
