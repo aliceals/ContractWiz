@@ -27,6 +27,17 @@ router.get('/home', (req, res) => {
             let weatherSix = json.daily.data[6].icon
             let weatherSeven = json.daily.data[7].icon
 
+
+            let imageTom = db.displayWeatherSign(weatherTom)
+            let imageTwo = db.displayWeatherSign(weatherTwo)
+            let imageThree = db.displayWeatherSign(weatherThree)
+            let imageFour = db.displayWeatherSign(weatherFour)
+            let imageFive = db.displayWeatherSign(weatherFive)
+            let imageSix = db.displayWeatherSign(weatherSix)
+            let imageSeven = db.displayWeatherSign(weatherSeven)
+
+
+
             let tempTomHigh = Math.round(json.daily.data[1].temperatureHigh)
             let tempTwoHigh = Math.round(json.daily.data[2].temperatureHigh)
             let tempThreeHigh = Math.round(json.daily.data[3].temperatureHigh)
@@ -66,7 +77,7 @@ router.get('/home', (req, res) => {
                     displaySixdays, displaySevendays
                 },
                 weather: {
-                    weatherTom, weatherTwo, weatherThree, weatherFour, weatherFive, weatherSix, weatherSeven
+                    imageTom, imageTwo, imageThree, imageFour, imageFive, imageSix, imageSeven
                 },
                 temp: {
                     tempTomHigh, tempTwoHigh, tempThreeHigh, tempFourHigh, tempFiveHigh, tempSixHigh, tempSevenHigh,
