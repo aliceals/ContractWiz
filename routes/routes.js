@@ -122,6 +122,15 @@ router.get('/bookings', (req, res) => {
         })
 })
 
+router.post('/delete', (req, res) => {
+    let bookingId = req.body
+    console.log(bookingId.bookingId)
+    db.deleteBooking(bookingId.bookingId)
+        .then(() => {
+            res.redirect('/bookings')
+        })
+})
+
 
 
 module.exports = router

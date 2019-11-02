@@ -2,7 +2,10 @@
 {{#each data}}
 <ul>
     <li>Booking Date:{{bookingDate}} at {{bookingTime}} <br>
-        Service: {{servicesDescription}}, Fee: ${{servicesFee}}</li>
+        Service: {{servicesDescription}}, Fee: ${{servicesFee}}<br>
+        <form action="/delete" method="POST"><button type="submit" name="bookingId" value="{{bookingId}}">Cancel
+                Booking</button></form>
+    </li>
     <br>
     <hr>
 </ul>

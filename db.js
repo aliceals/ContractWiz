@@ -6,6 +6,7 @@ module.exports = {
     addBooking,
     getBookings,
     displayWeatherSign,
+    deleteBooking
 }
 
 
@@ -48,4 +49,9 @@ function displayWeatherSign(weather) {
         return "../public/images/thunderstorm.png"
     }
     else return "../public/images/default.png"
+}
+
+
+function deleteBooking(bookingId, db = database) {
+    return db('bookings').where('bookingId', bookingId).delete()
 }
