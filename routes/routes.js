@@ -94,16 +94,16 @@ router.post('/booking', (req, res) => {
     let booking = req.body
 
 
-    db.getBookings()
+    db.addBooking(booking)
         .then(data => {
             console.log(data)
         })
+        .then(res.redirect('/bookings'))
 
-    // res.render('bookings')
 })
 
 
-router.get('/booking', (req, res) => {
+router.get('/bookings', (req, res) => {
     db.getBookings()
         .then(data => {
             res.render('bookings', { data: data })

@@ -3,17 +3,19 @@ const config = require('./knexfile')[environment]
 const database = require('knex')(config)
 
 module.exports = {
-    // addBooking,
+    addBooking,
     getBookings
 }
 
 
 
-// function addBooking(booking, db = database) {
-//     return db('bookings')
-//         .join('services', 'job_id', 'servicesId')
+function addBooking(booking, db = database) {
+    return db('bookings')
+        .join('services', 'job_id', 'servicesId')
+        .insert(booking)
+        .select()
 
-// }
+}
 
 function getBookings(db = database) {
     return db('bookings')
