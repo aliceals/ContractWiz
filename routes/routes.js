@@ -79,9 +79,11 @@ router.get('/home', (req, res) => {
 
 
 router.post('/home', (req, res) => {
-    console.log(req.body)
-    const date = req.body
-    res.redirect('/home')
+    // console.log(req.body)
+    let data = req.body
+
+    console.log(data)
+    res.render('book', data)
 })
 
 router.get('/book', (req, res) => {
