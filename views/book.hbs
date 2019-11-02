@@ -1,7 +1,8 @@
 <h1>Booking page</h1>
 <ul>
     <form action="/booking" method="POST">
-        <li>Date: <input type="text" name="bookingDate" value={{day}}></li>
+        <li>Date: <input type="text" name="bookingDate" value="{{day}}" placeholder="dd/mm/yyyy"></li>
+        <li>Time: <input type="time"></li>
         <li>Book:<select name="job_id">
                 <option value="1111">Lawn mowing</option>
                 <option value="1112">Weeding</option>

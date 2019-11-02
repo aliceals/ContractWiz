@@ -1,7 +1,6 @@
 const express = require('express')
 const db = require('../db')
 const router = express.Router()
-const hbs = require('express-handlebars')
 const fetch = require('node-fetch')
 const moment = require('moment');
 
@@ -96,22 +95,17 @@ router.post('/book', (req, res) => {
 })
 
 router.get('/book', (req, res) => {
+
     res.render('book')
 })
 
 
 router.post('/booking', (req, res) => {
-    console.log(req.body)
 
     let booking = req.body
 
-
     db.addBooking(booking)
-        .then(data => {
-            console.log(data)
-        })
         .then(res.redirect('/bookings'))
-
 })
 
 
@@ -124,12 +118,13 @@ router.get('/bookings', (req, res) => {
 
 router.post('/delete', (req, res) => {
     let bookingId = req.body
-    console.log(bookingId.bookingId)
     db.deleteBooking(bookingId.bookingId)
         .then(() => {
             res.redirect('/bookings')
         })
 })
+
+
 
 
 
