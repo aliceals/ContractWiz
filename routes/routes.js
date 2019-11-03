@@ -101,7 +101,6 @@ router.post('/book', (req, res) => {
                 service4: services[3].servicesFee,
                 service5: services[4].servicesFee,
             }
-            console.log(dayAndJob)
             res.render('book', dayAndJob)
         })
 })

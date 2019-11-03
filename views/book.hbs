@@ -11,7 +11,7 @@
                 <option value="1114" name="{{service4}}">Planting</option>
                 <option value="1115" name="{{service5}}">Retaining wall</option>
             </select></li>
-        <li>Fee<input type="text" id="fee" value="$40"></li>
+        <li>Fee<input type="text" id="fee" value="{{service1}}"></li>
         <li><button>Book</button></li>
     </form>
 </ul>
@@ -19,34 +19,19 @@
 <script>
 
     let fee = document.getElementById('fee')
-    var eSelect = document.getElementById('jobId');
-
-
-
-
 
     function selectFee() {
-        function selectName() {
-            let selectedName = eSelect.options[eSelect.selectedIndex].getAttribute("name")
-            return selectedName
-        }
-
-        selectName()
-
         if (jobId.value == '1111') {
-
-            fee.value = selectName()
+            fee.value = "{{service1}}"
         }
         else if (jobId.value == '1112') {
-            fee.value = selectName()
+            fee.value = "{{service2}}"
         } else if (jobId.value == '1113') {
-            fee.value = selectName()
+            fee.value = "{{service3}}"
         } else if (jobId.value == '1114') {
-            fee.value = selectName()
+            fee.value = "{{service4}}"
         } else if (jobId.value == '1115') {
-            fee.value = selectName()
-        } else {
-            fee.value = selectName()
+            fee.value = "{{service5}}"
         }
     }
 
