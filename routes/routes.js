@@ -7,8 +7,12 @@ const moment = require('moment');
 moment.locale('en-nz')
 
 
+// router.get('/', (req, res) => {
+//     res.redirect('/home')
+// })
+
 router.get('/', (req, res) => {
-    res.redirect('/home')
+    res.render('createUser')
 })
 
 

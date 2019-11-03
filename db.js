@@ -27,7 +27,6 @@ function getBookings(db = database) {
 }
 
 function displayWeatherSign(weather) {
-    console.log(weather)
     if (weather == 'cloudy') {
         return "../public/images/cloudy.png"
     } else if (weather == 'rain') {

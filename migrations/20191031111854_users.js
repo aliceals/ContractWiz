@@ -5,6 +5,8 @@ exports.up = function (knex) {
         table.string('userName')
         table.string('userAddress')
         table.string('userCity')
+        table.string('email')
+        table.integer('phoneNumber')
     })
 };
 
