@@ -7,6 +7,7 @@ exports.up = function (knex) {
         table.string('userCity')
         table.string('email')
         table.integer('phoneNumber')
+        table.string('password')
     })
 };
 

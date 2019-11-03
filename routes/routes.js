@@ -2,7 +2,8 @@ const express = require('express')
 const db = require('../db')
 const router = express.Router()
 const fetch = require('node-fetch')
-const moment = require('moment');
+const moment = require('moment')
+const passport = require('passport')
 
 moment.locale('en-nz')
 
@@ -11,18 +12,19 @@ moment.locale('en-nz')
 //     res.redirect('/home')
 // })
 
-router.get('/', (req, res) => {
+router.get('/login', (req, res) => {
     res.render('createUser')
 })
 
-router.post('/register', (req, res) => {
-    let newUser = req.body
-    db.createUser(newUser)
-        .then(() => {
-            res.redirect('/home')
-        })
+// router.post('/login', (req, res) => {
+//     let newUser = req.body
+//     console.log(newUser)
+//     db.createUser(newUser)
+//         .then(() => {
+//             res.redirect('/home')
+//         })
 
-})
+// })
 
 
 router.get('/home', (req, res) => {

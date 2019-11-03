@@ -17,14 +17,20 @@
   },
   "homepage": "https://github.com/aliceals/ContractWiz#readme",
   "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
     "handlebars": "^4.5.1",
     "hbs": "^4.0.6",
     "knex": "^0.20.1",
     "moment": "^2.24.0",
+    "morgan": "^1.9.1",
     "node-fetch": "^2.6.0",
     "nodemon": "^1.19.4",
+    "passport": "^0.4.0",
     "sqlite3": "^4.1.0"
   }
 }
