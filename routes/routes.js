@@ -124,6 +124,9 @@ router.post('/delete', (req, res) => {
         })
 })
 
+router.get('/fee', (req, res) => {
+    console.log(req.body)
+})
 
 
 

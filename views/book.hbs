@@ -3,14 +3,38 @@
     <form action="/booking" method="POST">
         <li>Date: <input type="text" name="bookingDate" value="{{day}}" placeholder="dd/mm/yyyy"></li>
         <li>Time: <input type="time"></li>
-        <li>Book:<select name="job_id">
-                <option value="1111">Lawn mowing</option>
-                <option value="1112">Weeding</option>
+
+        <li>Book:<select name="job_id" id="jobId" onchange=selectFee()>
+                <option value="1111" name="1">Lawn mowing</option>
+                <option value="1112" name="2">Weeding</option>
                 <option value="1113">Lawn mowing and weeding</option>
                 <option value="1114">Planting</option>
                 <option value="1115">Retaining wall</option>
             </select></li>
-        <li>Fee<input type="text"></li>
+        <li>Fee<input type="text" id="fee" value="$40"></li>
         <li><button>Book</button></li>
     </form>
 </ul>
+
+<script>
+
+    let fee = document.getElementById('fee')
+
+    function selectFee() {
+        if (jobId.value == '1111') {
+            fee.value = "$40"
+        } else if (jobId.value == '1112') {
+            fee.value = "$60"
+        } else if (jobId.value == '1113') {
+            fee.value = '$80'
+        } else if (jobId.value == '1114') {
+            fee.value = '$100'
+        } else if (jobId.value == '1115') {
+            fee.value = '$120'
+        } else {
+            fee.value = '$40'
+        }
+    }
+
+
+</script>
