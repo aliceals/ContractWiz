@@ -7,7 +7,8 @@ module.exports = {
     getBookings,
     displayWeatherSign,
     deleteBooking,
-    getServiceFee
+    getServiceFee,
+    createUser
 }
 
 
@@ -58,4 +59,8 @@ function deleteBooking(bookingId, db = database) {
 
 function getServiceFee(db = database) {
     return db('services').select('servicesFee')
+}
+
+function createUser(user, db = database) {
+    return db('users').insert(user).select()
 }

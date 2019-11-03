@@ -15,6 +15,15 @@ router.get('/', (req, res) => {
     res.render('createUser')
 })
 
+router.post('/register', (req, res) => {
+    let newUser = req.body
+    db.createUser(newUser)
+        .then(() => {
+            res.redirect('/home')
+        })
+
+})
+
 
 router.get('/home', (req, res) => {
     fetch("https://api.darksky.net/forecast/6fe0e60f51867939f3313dd1351dcd17/-41.131489,174.839996?units=si")
