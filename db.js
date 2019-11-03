@@ -6,7 +6,8 @@ module.exports = {
     addBooking,
     getBookings,
     displayWeatherSign,
-    deleteBooking
+    deleteBooking,
+    getServiceFee
 }
 
 
@@ -54,4 +55,8 @@ function displayWeatherSign(weather) {
 
 function deleteBooking(bookingId, db = database) {
     return db('bookings').where('bookingId', bookingId).delete()
+}
+
+function getServiceFee(db = database) {
+    return db('services').select('servicesFee')
 }

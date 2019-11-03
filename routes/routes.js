@@ -91,7 +91,19 @@ router.get('/home', (req, res) => {
 
 router.post('/book', (req, res) => {
     let data = req.body
-    res.render('book', data)
+    db.getServiceFee()
+        .then(services => {
+            let dayAndJob = {
+                day: data.day,
+                service1: services[0].servicesFee,
+                service2: services[1].servicesFee,
+                service3: services[2].servicesFee,
+                service4: services[3].servicesFee,
+                service5: services[4].servicesFee,
+            }
+            console.log(dayAndJob)
+            res.render('book', dayAndJob)
+        })
 })
 
 router.get('/book', (req, res) => {
@@ -124,9 +136,7 @@ router.post('/delete', (req, res) => {
         })
 })
 
-router.get('/fee', (req, res) => {
-    console.log(req.body)
-})
+
 
 
 
