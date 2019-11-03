@@ -53,6 +53,7 @@ router.get('/home', (req, res) => {
             let tempSixLow = Math.round(json.daily.data[6].temperatureLow)
             let tempSevenLow = Math.round(json.daily.data[7].temperatureLow)
 
+
             let displayTomorrow = moment().add(1, 'days').format('dddd MMM Do YYYY')
             let displayTwodays = moment().add(2, 'days').format('dddd MMM Do YYYY')
             let displayThreedays = moment().add(3, 'days').format('dddd MMM Do YYYY')
@@ -60,6 +61,7 @@ router.get('/home', (req, res) => {
             let displayFivedays = moment().add(5, 'days').format('dddd MMM Do YYYY')
             let displaySixdays = moment().add(6, 'days').format('dddd MMM Do YYYY')
             let displaySevendays = moment().add(7, 'days').format('dddd MMM Do YYYY')
+
 
             let tomorrow = moment().add(1, 'days').format('L')
             let twodays = moment().add(2, 'days').format('L')

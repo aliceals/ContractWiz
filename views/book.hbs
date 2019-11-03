@@ -1,8 +1,9 @@
 <h1>Booking page</h1>
 <ul>
     <form action="/booking" method="POST">
-        <li>Date: <input type="text" name="bookingDate" value="{{day}}" placeholder="dd/mm/yyyy"></li>
-        <li>Time: <input type="time" name="bookingTime"></li>
+        <li> Date: <input type="date" id="dt" onchange="mydate1();" hidden />
+            <input type="text" name="bookingDate" id="ndt" onclick="mydate();" value="{{day}}" /></li>
+        <li>Time: <input type="time" name="bookingTime" required></li>
 
         <li>Book:<select name="job_id" id="jobId" onchange=selectFee()>
                 <option value="1111" name="{{service1}}">Lawn mowing</option>
@@ -33,6 +34,22 @@
         } else if (jobId.value == '1115') {
             fee.value = "{{service5}}"
         }
+    }
+
+    function mydate() {
+        document.getElementById("dt").hidden = false;
+        document.getElementById("ndt").hidden = true;
+    }
+
+    function mydate1() {
+        d = new Date(document.getElementById("dt").value);
+        dt = d.getDate();
+        mn = d.getMonth();
+        mn++;
+        yy = d.getFullYear();
+        document.getElementById("ndt").value = dt + "/" + mn + "/" + yy
+        document.getElementById("ndt").hidden = false;
+        document.getElementById("dt").hidden = true;
     }
 
 </script>
