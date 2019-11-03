@@ -1,10 +1,22 @@
-<h2>Register</h2>
-<form action="/register" method="POST">
-    <input type="text" name="userName" placeholder="Name" required>
-    <input type="text" name="userAddress" placeholder="Address" required>
-    <input type="text" name="userCity" placeholder="City" required>
-    <input type="text" name="email" placeholder="email" required>
-    <input type="text" name="phoneNumber" placeholder="phone number" required>
+<h2>Welcome to BookEm</h2>
 
-    <button type="submit">Register</button>
+<h3>Log in</h3>
+
+<form action="/login" method="post">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="text" name="password" placeholder="Password" required>
+    <button type="submit">Login</button>
 </form>
+
+
+
+<h3>Register</h2>
+    <form action="/register" method="POST">
+        <input type="text" name="userName" placeholder="Name" required>
+        <input type="text" name="userAddress" placeholder="Address" required>
+        <input type="text" name="userCity" placeholder="City" required>
+        <input type="text" name="email" placeholder="email" required>
+        <input type="text" name="phoneNumber" placeholder="phone number" required>
+
+        <button type="submit">Register</button>
+    </form>
