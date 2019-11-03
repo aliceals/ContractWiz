@@ -2,7 +2,7 @@
 <ul>
     <form action="/booking" method="POST">
         <li>Date: <input type="text" name="bookingDate" value="{{day}}" placeholder="dd/mm/yyyy"></li>
-        <li>Time: <input type="time"></li>
+        <li>Time: <input type="time" name="bookingTime"></li>
 
         <li>Book:<select name="job_id" id="jobId" onchange=selectFee()>
                 <option value="1111" name="{{service1}}">Lawn mowing</option>
