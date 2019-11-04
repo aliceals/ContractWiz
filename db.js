@@ -8,7 +8,9 @@ module.exports = {
     displayWeatherSign,
     deleteBooking,
     getServiceFee,
-    createUser
+    createUser,
+    getUser,
+    getPassword
 }
 
 
@@ -63,4 +65,12 @@ function getServiceFee(db = database) {
 
 function createUser(user, db = database) {
     return db('users').insert(user).select()
+}
+
+function getUser(username, db = database) {
+    return db('users').where('userName', username).select('userName').first()
+}
+
+function getPassword(username, password, db = database) {
+    return db('users').where('username', username).where('password', password).select('password').first()
 }

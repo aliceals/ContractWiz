@@ -60,11 +60,7 @@ server.get('/', sessionChecker, (req, res) => {
 
 //route for user signup
 
-server.get('login', sessionChecker, (req, res) => {
-    res.render('createUser')
-})
-
-server.post('/login', sessionChecker, (req, res) => {
+server.post('/signup', sessionChecker, (req, res) => {
     let user = {
         userName: req.body.userName,
         userAddress: req.body.userAddress,
@@ -80,6 +76,38 @@ server.post('/login', sessionChecker, (req, res) => {
         })
         .catch(error => {
             res.redirect('/login')
+        })
+})
+
+
+server.get('/signup', sessionChecker, (req, res) => {
+    res.render('login')
+})
+
+server.get('/login', sessionChecker, (req, res) => {
+    res.render('login')
+})
+
+server.post('/login', sessionChecker, (req, res) => {
+    let username = req.body.username
+    let password = req.body.password
+
+    db.getUser(username)
+        .then(data => {
+            if (!data) {
+                console.log("no user with this username")
+                res.redirect('/login')
+            } else {
+                db.getPassword(username, password)
+                    .then(data => {
+                        if (!data) {
+                            console.log("incorrect password")
+                            res.redirect('/login')
+                        } else {
+                            res.redirect('/home')
+                        }
+                    })
+            }
         })
 })
 

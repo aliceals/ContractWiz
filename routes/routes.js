@@ -12,9 +12,7 @@ moment.locale('en-nz')
 //     res.redirect('/home')
 // })
 
-router.get('/login', (req, res) => {
-    res.render('createUser')
-})
+
 
 // router.post('/login', (req, res) => {
 //     let newUser = req.body
@@ -135,7 +133,6 @@ router.post('/booking', (req, res) => {
     db.addBooking(booking)
         .then(res.redirect('/bookings'))
 })
-
 
 router.get('/bookings', (req, res) => {
     db.getBookings()
