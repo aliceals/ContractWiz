@@ -74,9 +74,10 @@ function getUser(username, db = database) {
 }
 
 function getPassword(username, password, db = database) {
-    return db('users').where('username', username).where('password', password).select('password').first()
+    return db('users').where('userName', username).where('password', password).select('password').first()
 }
 
 function getUsersCity(username, db = database) {
-    return db('users').where('username', username).select('userCity')
+    return db('users').where('userName', username).select('userCity').first()
+
 }
