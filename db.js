@@ -25,9 +25,11 @@ function addBooking(booking, db = database) {
 
 }
 
-function getBookings(db = database) {
+function getBookings(username, db = database) {
     return db('bookings')
         .join('services', 'job_id', 'servicesId')
+        .join('users', 'user_id', 'userId')
+        .where('userName', username)
         .select()
 }
 

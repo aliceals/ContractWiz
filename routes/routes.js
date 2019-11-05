@@ -56,7 +56,6 @@ router.get('/home', sessionUtil.sessionChecker, (req, res) => {
                     let tempSixLow = Math.round(json.daily.data[6].temperatureLow)
                     let tempSevenLow = Math.round(json.daily.data[7].temperatureLow)
 
-
                     let displayTomorrow = moment().add(1, 'days').format('dddd MMM Do YYYY')
                     let displayTwodays = moment().add(2, 'days').format('dddd MMM Do YYYY')
                     let displayThreedays = moment().add(3, 'days').format('dddd MMM Do YYYY')
@@ -64,7 +63,6 @@ router.get('/home', sessionUtil.sessionChecker, (req, res) => {
                     let displayFivedays = moment().add(5, 'days').format('dddd MMM Do YYYY')
                     let displaySixdays = moment().add(6, 'days').format('dddd MMM Do YYYY')
                     let displaySevendays = moment().add(7, 'days').format('dddd MMM Do YYYY')
-
 
                     let tomorrow = moment().add(1, 'days').format('L')
                     let twodays = moment().add(2, 'days').format('L')
@@ -96,7 +94,6 @@ router.get('/home', sessionUtil.sessionChecker, (req, res) => {
         })
 })
 
-
 router.post('/book', (req, res) => {
     let data = req.body
     db.getServiceFee()
@@ -113,13 +110,13 @@ router.post('/book', (req, res) => {
         })
 })
 
-router.get('/book', (req, res) => {
+router.get('/book', sessionUtil.sessionChecker, (req, res) => {
 
     res.render('book')
 })
 
 
-router.post('/booking', (req, res) => {
+router.post('/booking', sessionUtil.sessionChecker, (req, res) => {
 
     let booking = req.body
 
@@ -127,14 +124,15 @@ router.post('/booking', (req, res) => {
         .then(res.redirect('/bookings'))
 })
 
-router.get('/bookings', (req, res) => {
-    db.getBookings()
+router.get('/bookings', sessionUtil.sessionChecker, (req, res) => {
+    db.getBookings(req.session.username)
         .then(data => {
+            console.log(data)
             res.render('bookings', { data: data })
         })
 })
 
-router.post('/delete', (req, res) => {
+router.post('/delete', sessionUtil.sessionChecker, (req, res) => {
     let bookingId = req.body
     db.deleteBooking(bookingId.bookingId)
         .then(() => {
