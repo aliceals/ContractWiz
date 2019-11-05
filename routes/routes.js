@@ -30,6 +30,7 @@ router.get('/home', sessionUtil.sessionChecker, (req, res) => {
                     let weatherSix = json.daily.data[6].icon
                     let weatherSeven = json.daily.data[7].icon
 
+
                     let imageTom = db.displayWeatherSign(weatherTom)
                     let imageTwo = db.displayWeatherSign(weatherTwo)
                     let imageThree = db.displayWeatherSign(weatherThree)
@@ -117,17 +118,25 @@ router.get('/book', sessionUtil.sessionChecker, (req, res) => {
 
 
 router.post('/booking', sessionUtil.sessionChecker, (req, res) => {
+    let username = req.session.username
 
     let booking = req.body
 
-    db.addBooking(booking)
-        .then(res.redirect('/bookings'))
+
+    db.getFullUser(username)
+        .then(data => {
+            let userId = data.userId
+            booking.user_id = userId
+            db.addBooking(userId, booking)
+                .then(res.redirect('/bookings'))
+        })
+
+
 })
 
 router.get('/bookings', sessionUtil.sessionChecker, (req, res) => {
     db.getBookings(req.session.username)
         .then(data => {
-            console.log(data)
             res.render('bookings', { data: data })
         })
 })

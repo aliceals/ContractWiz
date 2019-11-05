@@ -36,12 +36,13 @@ server.use(session({
 
 //this middleware will check if user's cookie is still saved in browser and use
 //this usually happens when you stop your express server after login
-server.use((req, res, next) => {
-    if (req.cookies.user_sid && !req.session.username) {
-        res.clearCookie('user_sid')
-    }
-    next()
-})
+// server.use((req, res, next) => {
+//     if (req.cookies.user_sid && !req.session.username) {
+//         res.clearCookie('user_sid')
+//     }
+//     next()
+// })
+
 
 
 

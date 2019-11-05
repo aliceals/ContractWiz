@@ -11,15 +11,16 @@ module.exports = {
     createUser,
     getUser,
     getPassword,
-    getUsersCity
+    getUsersCity,
+    getFullUser
 
 }
 
 
 
-function addBooking(booking, db = database) {
+function addBooking(userId, booking, db = database) {
     return db('bookings')
-        .join('services', 'job_id', 'servicesId')
+        .where('user_id', userId)
         .insert(booking)
         .select()
 
@@ -82,4 +83,8 @@ function getPassword(username, password, db = database) {
 function getUsersCity(username, db = database) {
     return db('users').where('userName', username).select('userCity').first()
 
+}
+
+function getFullUser(username, db = database) {
+    return db('users').where('userName', username).select().first()
 }
