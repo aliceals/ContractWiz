@@ -10,7 +10,9 @@ module.exports = {
     getServiceFee,
     createUser,
     getUser,
-    getPassword
+    getPassword,
+    getUsersCity
+
 }
 
 
@@ -73,4 +75,8 @@ function getUser(username, db = database) {
 
 function getPassword(username, password, db = database) {
     return db('users').where('username', username).where('password', password).select('password').first()
+}
+
+function getUsersCity(username, db = database) {
+    return db('users').where('username', username).select('userCity')
 }

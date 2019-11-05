@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const morgan = require('morgan')
 const db = require('./db')
+const sessionUtils = require('./sessionutils')
 
 
 //Middleware
@@ -42,25 +43,17 @@ server.use((req, res, next) => {
     next()
 })
 
-//middleware function to check for logged-in users
 
-const sessionChecker = (req, res, next) => {
-    if (req.session.username && req.cookies.user_sid) {
-        res.redirect('/home')
-    } else {
-        next()
-    }
-}
 
 //route for home-page
 
-server.get('/', sessionChecker, (req, res) => {
-    res.redirect('/login')
+server.get('/', sessionUtils.sessionChecker, (req, res) => {
+    res.redirect('/home')
 })
 
 //route for user signup
 
-server.post('/register', sessionChecker, (req, res) => {
+server.post('/register', (req, res) => {
     let user = {
         userName: req.body.userName,
         userAddress: req.body.userAddress,
@@ -81,15 +74,15 @@ server.post('/register', sessionChecker, (req, res) => {
 })
 
 
-server.get('/register', sessionChecker, (req, res) => {
+server.get('/register', (req, res) => {
     res.render('register')
 })
 
-server.get('/login', sessionChecker, (req, res) => {
+server.get('/login', (req, res) => {
     res.render('login')
 })
 
-server.post('/login', sessionChecker, (req, res) => {
+server.post('/login', (req, res) => {
     let username = req.body.username
     let password = req.body.password
 
@@ -114,13 +107,7 @@ server.post('/login', sessionChecker, (req, res) => {
         })
 })
 
-server.get('/home', (req, res) => {
-    if (req.session.username && req.cookies.user_sid) {
-        res.render('home')
-    } else {
-        res.redirect('/login')
-    }
-})
+
 
 server.get('/logout', (req, res) => {
     if (req.session.username && req.cookies.user_sid) {
@@ -131,11 +118,13 @@ server.get('/logout', (req, res) => {
     }
 });
 
+server.use('/', routes)
+
 server.use(function (req, res, next) {
     res.status(404).send("Sorry cant find that")
 })
 
-server.use('/', routes)
+
 
 module.exports = server
 

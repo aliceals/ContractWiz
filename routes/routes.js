@@ -4,32 +4,23 @@ const router = express.Router()
 const fetch = require('node-fetch')
 const moment = require('moment')
 const passport = require('passport')
+const sessionUtil = require('../sessionutils')
+
 
 moment.locale('en-nz')
 
 
-// router.get('/', (req, res) => {
-//     res.redirect('/home')
-// })
+router.get('/home', sessionUtil.sessionChecker, (req, res) => {
+
+    // let cities =
+
+    //     console.log()
 
 
 
-// router.post('/login', (req, res) => {
-//     let newUser = req.body
-//     console.log(newUser)
-//     db.createUser(newUser)
-//         .then(() => {
-//             res.redirect('/home')
-//         })
-
-// })
-
-
-router.get('/home', (req, res) => {
     fetch("https://api.darksky.net/forecast/6fe0e60f51867939f3313dd1351dcd17/-41.131489,174.839996?units=si")
         .then((res) => res.json())
         .then(json => {
-
 
             let weatherTom = json.daily.data[1].icon
             let weatherTwo = json.daily.data[2].icon
@@ -38,7 +29,6 @@ router.get('/home', (req, res) => {
             let weatherFive = json.daily.data[5].icon
             let weatherSix = json.daily.data[6].icon
             let weatherSeven = json.daily.data[7].icon
-
 
             let imageTom = db.displayWeatherSign(weatherTom)
             let imageTwo = db.displayWeatherSign(weatherTwo)
@@ -96,7 +86,8 @@ router.get('/home', (req, res) => {
                 temp: {
                     tempTomHigh, tempTwoHigh, tempThreeHigh, tempFourHigh, tempFiveHigh, tempSixHigh, tempSevenHigh,
                     tempTomLow, tempTwoLow, tempThreeLow, tempFourLow, tempFiveLow, tempSixLow, tempSevenLow
-                }
+                },
+                userName: req.session.username
             }
 
             res.render('home', data)
