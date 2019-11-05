@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const morgan = require('morgan')
 const db = require('./db')
-const bcrypt = require('bcryptjs')
 
 
 //Middleware
@@ -37,7 +36,7 @@ server.use(session({
 //this middleware will check if user's cookie is still saved in browser and use
 //this usually happens when you stop your express server after login
 server.use((req, res, next) => {
-    if (req.cookies.user_sid && !req.session.user) {
+    if (req.cookies.user_sid && !req.session.username) {
         res.clearCookie('user_sid')
     }
     next()
@@ -46,7 +45,7 @@ server.use((req, res, next) => {
 //middleware function to check for logged-in users
 
 const sessionChecker = (req, res, next) => {
-    if (req.session.user && req.cookies.user_sid) {
+    if (req.session.username && req.cookies.user_sid) {
         res.redirect('/home')
     } else {
         next()
@@ -72,7 +71,8 @@ server.post('/register', sessionChecker, (req, res) => {
     }
     db.createUser(user)
         .then(user => {
-            req.session.user = user.dataValues
+            console.log(user)
+            req.session.username = user.dataValues
             res.redirect('/home')
         })
         .catch(error => {
@@ -97,7 +97,7 @@ server.post('/login', sessionChecker, (req, res) => {
         .then(data => {
             if (!data) {
                 console.log("no user with this username")
-                res.redirect('/login')
+                res.redirect('/login?error=nouser')
             } else {
                 db.getPassword(username, password)
                     .then(data => {
@@ -105,6 +105,8 @@ server.post('/login', sessionChecker, (req, res) => {
                             console.log("incorrect password")
                             res.redirect('/login')
                         } else {
+                            console.log("correct username")
+                            req.session.username = username
                             res.redirect('/home')
                         }
                     })
@@ -112,7 +114,26 @@ server.post('/login', sessionChecker, (req, res) => {
         })
 })
 
+server.get('/home', (req, res) => {
+    if (req.session.username && req.cookies.user_sid) {
+        res.render('home')
+    } else {
+        res.redirect('/login')
+    }
+})
 
+server.get('/logout', (req, res) => {
+    if (req.session.username && req.cookies.user_sid) {
+        res.clearCookie('user_sid');
+        res.redirect('/');
+    } else {
+        res.redirect('/login');
+    }
+});
+
+server.use(function (req, res, next) {
+    res.status(404).send("Sorry cant find that")
+})
 
 server.use('/', routes)
 
