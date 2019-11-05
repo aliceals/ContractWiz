@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const morgan = require('morgan')
 const db = require('./db')
+const bcrypt = require('bcryptjs')
 
 
 //Middleware
@@ -60,7 +61,7 @@ server.get('/', sessionChecker, (req, res) => {
 
 //route for user signup
 
-server.post('/signup', sessionChecker, (req, res) => {
+server.post('/register', sessionChecker, (req, res) => {
     let user = {
         userName: req.body.userName,
         userAddress: req.body.userAddress,
@@ -80,8 +81,8 @@ server.post('/signup', sessionChecker, (req, res) => {
 })
 
 
-server.get('/signup', sessionChecker, (req, res) => {
-    res.render('login')
+server.get('/register', sessionChecker, (req, res) => {
+    res.render('register')
 })
 
 server.get('/login', sessionChecker, (req, res) => {
