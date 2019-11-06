@@ -65,7 +65,6 @@ server.post('/register', (req, res) => {
     }
     db.createUser(user)
         .then(user => {
-            console.log(user)
             req.session.username = user.dataValues
             res.redirect('/home')
         })

@@ -3,8 +3,8 @@ const db = require('../db')
 const router = express.Router()
 const fetch = require('node-fetch')
 const moment = require('moment')
-const passport = require('passport')
 const sessionUtil = require('../sessionutils')
+const bcrypt = require('bcrypt')
 
 
 moment.locale('en-nz')
